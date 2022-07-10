@@ -37,8 +37,21 @@ class PerformanceCalculator {
     }
 }
 
+class tragedyPerformanceCalculator extends PerformanceCalculator {
+}
+
+class comedyPerformanceCalculator extends PerformanceCalculator {
+}
+
 function createPerformanceCalculator(aPerformance) {
-    return new PerformanceCalculator(aPerformance);
+    switch (aPerformance.play.type) {
+        case 'tragedy':
+            return new tragedyPerformanceCalculator(aPerformance);
+        case 'comedy':
+            return new comedyPerformanceCalculator(aPerformance);
+        default:
+            throw new Error(`unknown type: ${aPerformance.play.type}`);
+    }
 }
 
 export function createStatementData(invoice, plays) {
