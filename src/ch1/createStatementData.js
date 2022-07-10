@@ -4,7 +4,7 @@ class PerformanceCalculator {
     }
 
     get amount() {
-        throw new Error(`unknown type: ${this.aPerformance.play.type}`);
+        throw new Error('subclass responsibility');
     }
 
     get volumeCredits() {
