@@ -3,8 +3,13 @@ export {statement}
 function statement(invoice, plays) {
     const statementData = {};
     statementData.customer = invoice.customer;
-    statementData.performances = invoice.performances;
+    statementData.performances = invoice.performances.map(enrichPerformance);
+
     return renderPlainText(statementData, invoice, plays);
+
+    function enrichPerformance(aPerformance) {
+        return Object.assign({}, aPerformance);
+    }
 }
 
 function renderPlainText(data, invoice, plays) {
